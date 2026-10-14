@@ -1,0 +1,89 @@
+name: Fetch property photos
+
+# Downloads the property photos listed in images/p/photos.txt from Pexels
+# (free-to-use photos, https://www.pexels.com/license/) and stores copies in
+# images/p/ (large, 1600px) and images/p/t/ (cards, 720px) so the site serves them itself.
+on:
+  push:
+    branches: [main]
+    paths: ["images/p/photos.txt", ".github/workflows/fetch-photos.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-photos
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download missing photos
+        run: |
+          python3 - <<'PY'
+          import os, re, time, urllib.request
+          UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36 MayoRealEstatesPhotoFetcher (https://mayorealestates.com)"}
+          os.makedirs("images/p/t", exist_ok=True)
+
+          def get(url):
+              req = urllib.request.Request(url, headers=UA)
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  return r.read()
+
+          def base_urls(pid, slug):
+              yield "https://images.pexels.com/photos/%s/pexels-photo-%s.jpeg" % (pid, pid)
+              try:
+                  html = get("https://www.pexels.com/photo/%s-%s/" % (slug, pid)).decode("utf-8", "ignore")
+                  for m in re.findall(r"https://images\.pexels\.com/photos/%s/[^\"'?\s]+\.(?:jpe?g|png)" % pid, html):
+                      yield m
+              except Exception as e:
+                  print("  page fetch failed", pid, e)
+
+          ok = skipped = failed = 0
+          failures = []
+          for line in open("images/p/photos.txt", encoding="utf-8"):
+              line = line.strip()
+              if not line or line.startswith("#") or "|" not in line:
+                  continue
+              pid, slug = line.split("|", 1)
+              big = "images/p/%s.jpg" % pid
+              small = "images/p/t/%s.jpg" % pid
+              if os.path.exists(big) and os.path.getsize(big) > 8000 and os.path.exists(small) and os.path.getsize(small) > 4000:
+                  skipped += 1
+                  continue
+              done = False
+              for base in base_urls(pid, slug):
+                  try:
+                      b = get(base + "?auto=compress&cs=tinysrgb&w=1600&fm=jpg")
+                      s = get(base + "?auto=compress&cs=tinysrgb&w=720&h=540&fit=crop&fm=jpg")
+                      if len(b) < 8000 or len(s) < 4000:
+                          raise ValueError("too small")
+                      open(big, "wb").write(b); open(small, "wb").write(s)
+                      print("OK  ", pid, len(b), len(s)); ok += 1; done = True
+                      break
+                  except Exception as e:
+                      print("  try failed", pid, base, e)
+                  time.sleep(1)
+              if not done:
+                  failed += 1; failures.append(line)
+              time.sleep(0.6)
+          open("images/p/failed.txt", "w").write("\n".join(failures) + ("\n" if failures else ""))
+          print(f"downloaded={ok} skipped={skipped} failed={failed}")
+          PY
+
+      - name: Commit photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/p
+          if git diff --cached --quiet; then
+            echo "No new photos"
+          else
+            git commit -m "Add property photos (downloaded from Pexels)"
+            git pull --rebase origin main || true
+            git push
+          fi
