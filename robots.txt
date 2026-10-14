@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mayorealestates.com/sitemap.xml

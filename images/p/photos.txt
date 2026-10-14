@@ -63,8 +63,6 @@
 7214450|stylish-kitchen-interior-in-modern-flat
 7535063|interior-of-elegant-bedroom-with-beige-furniture-and-crystal-chandelier
 7535048|table-an-cabinet-in-vintage-room
-27562206|residential-project-in-sulaymaniyah-city
-27562218|residential-project-in-sulaymaniyah-city
 33529500|modern-luxury-living-room-with-elegant-decor
 33529508|elegant-luxurious-bathroom-with-modern-decor
 35189709|modern-kitchen-interior-with-elegant-lighting
@@ -91,7 +89,6 @@
 4933154|an-empty-living-room
 7377669|an-empty-couch
 6970051|chairs-around-a-table-by-the-window
-32372036|cozy-attic-bedroom-with-city-view
 11631278|building-with-balconies
 28537915|modern-apartment-buildings-against-a-sunset-sky
 33738275|elegant-manor-with-lush-landscaped-garden
