@@ -1,7 +1,7 @@
 # Mayo Real Estates — mayorealestates.com
 
 Luxury houses, villas, farmhouses, plots, apartments and commercial property in Lahore, Islamabad and across Pakistan.
-Owner: Wakeel Mayo · WhatsApp +92 347 4209912 · +92 305 4512133 · wakeelmayo@gmail.com
+Owner: Nadeem Mayo · WhatsApp +92 307 4646927 · nadeemonlin@gmail.com
 
 ## Where to edit
 

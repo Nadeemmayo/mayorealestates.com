@@ -196,8 +196,7 @@ function renderDetail(l){
    '</div><aside class="agent"><div class="box"><div class="who"><div class="av">WM</div><div><b>'+esc(S.owner)+'</b><div class="muted" style="font-size:.88rem">Mayo Real Estates</div></div></div>'+
      '<div class="act"><a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="'+waLink(msg)+'"><i class="fa-brands fa-whatsapp"></i> WhatsApp about this property</a>'+
      '<a class="btn btn-ink btn-block" href="tel:'+S.phone1.replace(/\s/g,"")+'"><i class="fa-solid fa-phone"></i> '+S.phone1+'</a>'+
-     '<a class="btn btn-line btn-block" href="tel:'+S.phone2.replace(/\s/g,"")+'"><i class="fa-solid fa-phone"></i> '+S.phone2+'</a>'+
-     '<a class="btn btn-line btn-block" href="mailto:'+S.email+'?subject='+encodeURIComponent("Enquiry: "+l.title)+'&body='+encodeURIComponent(msg)+'"><i class="fa-solid fa-envelope"></i> Email us</a>'+
+     '     '<a class="btn btn-line btn-block" href="mailto:'+S.email+'?subject='+encodeURIComponent("Enquiry: "+l.title)+'&body='+encodeURIComponent(msg)+'"><i class="fa-solid fa-envelope"></i> Email us</a>'+
      '<a class="btn btn-brass btn-block" target="_blank" rel="noopener" href="'+waLink("Assalam o Alaikum, I would like to book a site visit for: "+l.title+" ("+locText(l)+"). "+link)+'"><i class="fa-regular fa-calendar-check"></i> Book a site visit</a></div>'+
      '<p class="note" style="margin-top:14px">Photos may be representative. Every detail — size, documents and price — is confirmed at your site visit.</p></div></aside></div>'+
    '<section class="mt"><div class="sec-head"><h2>Similar properties</h2><a class="more" href="properties.html?type='+(l.type==="villa"?"house":l.type)+'&city='+encodeURIComponent(l.city)+'">See all</a></div><div class="grid" id="similar"></div></section>';

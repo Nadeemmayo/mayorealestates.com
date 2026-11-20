@@ -3,10 +3,10 @@
 Edit here, then run:  python3 tools/build.py   (rebuilds all .html pages)."""
 
 SITE = dict(
-    name="Mayo Real Estates", domain="mayorealestates.com", owner="Wakeel Mayo",
-    phone1="+92 347 4209912", phone2="+92 305 4512133", whatsapp="923474209912",
-    email="wakeelmayo@gmail.com", office="Raiwind, Lahore",
-    social=dict(facebook="#", instagram="#", tiktok="#"),
+    name="Mayo Real Estates", domain="mayorealestates.com", owner="Nadeem Mayo",
+    phone1="+92 307 4646927", whatsapp="923074646927",
+    email="nadeemonlin@gmail.com", office="Raiwind, Lahore",
+    social=dict(facebook="https://www.facebook.com/share/19aDt6pcgh/", instagram="https://www.instagram.com/menadeemmayo", linkedin="https://www.linkedin.com/in/menadeemmayos/", x="https://x.com/Nadeem_seo", telegram="https://t.me/Nadeemmayos"),
 )
 
 # photo ids refer to images/p/<id>.jpg

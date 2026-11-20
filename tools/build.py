@@ -11,7 +11,6 @@ V = "20261014"
 DOMAIN = "https://" + SITE["domain"]
 e = html.escape
 TEL1 = SITE["phone1"].replace(" ", "")
-TEL2 = SITE["phone2"].replace(" ", "")
 WA = SITE["whatsapp"]
 
 def img(pid, small=False):
@@ -26,8 +25,10 @@ def social(cls="social"):
     s = SITE["social"]
     return ('<div class="%s"><a href="%s" class="fb" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>'
             '<a href="%s" class="ig" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>'
-            '<a href="%s" class="tt" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>'
-            '<a href="https://wa.me/%s" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div>') % (cls, s["facebook"], s["instagram"], s["tiktok"], WA)
+            '<a href="%s" class="li" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>'
+            '<a href="%s" class="xx" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>'
+            '<a href="%s" class="tg" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>'
+            '<a href="https://wa.me/%s" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div>') % (cls, s["facebook"], s["instagram"], s["linkedin"], s["x"], s["telegram"], WA)
 
 PROP_MENU = [("houses-for-sale.html","fa-house","Houses"),("new-houses.html","fa-star","Brand-new houses"),("old-houses.html","fa-house-chimney","Old houses"),
              ("luxury-villas.html","fa-gem","Luxury villas"),("farmhouses.html","fa-tree","Farmhouses"),("plots.html","fa-map","Plots & land"),
@@ -40,7 +41,7 @@ def drop(items):
 def header():
     return f"""<a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="container">
-  <div class="links"><a href="https://wa.me/{WA}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>{SITE['phone1']}</a><a href="tel:{TEL2}" class="hide-sm"><i class="fa-solid fa-phone"></i>{SITE['phone2']}</a><a href="mailto:{SITE['email']}" class="hide-sm"><i class="fa-solid fa-envelope"></i>{SITE['email']}</a></div>
+  <div class="links"><a href="https://wa.me/{WA}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>{SITE['phone1']}</a><a href="mailto:{SITE['email']}" class="hide-sm"><i class="fa-solid fa-envelope"></i>{SITE['email']}</a></div>
   {social("social")}
 </div></div>
 <header class="site-header"><div class="container nav">
@@ -77,7 +78,6 @@ def footer():
   <div><h4>Islamabad</h4><ul>{socs_i}<li><a href="property-in-karachi.html">Karachi</a></li><li><a href="property-in-murree.html">Murree</a></li></ul></div>
   <div><h4>Contact</h4><ul class="f-contact">
     <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/{WA}" target="_blank" rel="noopener">{SITE['phone1']}</a></li>
-    <li><i class="fa-solid fa-phone"></i><a href="tel:{TEL2}">{SITE['phone2']}</a></li>
     <li><i class="fa-solid fa-envelope"></i><a href="mailto:{SITE['email']}">{SITE['email']}</a></li>
     <li><i class="fa-solid fa-location-dot"></i><span>{SITE['office']}, Pakistan</span></li>
   </ul><ul style="margin-top:14px"><li><a href="sell-property.html">Sell your property</a></li><li><a href="calculators.html">Calculators</a></li><li><a href="blog.html">Property guides</a></li><li><a href="faq.html">FAQs</a></li><li><a href="about.html">About us</a></li></ul></div>
@@ -85,7 +85,7 @@ def footer():
 <div class="f-bottom"><span>© <span class="year">2026</span> Mayo Real Estates. All rights reserved.</span><span><a href="privacy-policy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="photo-credits.html">Photo credits</a></span></div>
 </div></footer>
 <a class="float-wa" href="https://wa.me/{WA}?text={'Assalam%20o%20Alaikum%2C%20I%20found%20you%20on%20mayorealestates.com'}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-<div class="side-toggle"><button class="tab" aria-expanded="false" aria-label="Contact options">Contact us</button><div class="links"><a class="ph" href="tel:{TEL1}" aria-label="Call"><i class="fa-solid fa-phone"></i></a><a href="https://wa.me/{WA}" target="_blank" rel="noopener" style="background:#25d366" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a><a class="em" href="mailto:{SITE['email']}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a><a href="{SITE['social']['facebook']}" style="background:#1877f2" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="{SITE['social']['instagram']}" style="background:#d6249f" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="{SITE['social']['tiktok']}" style="background:#000" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div></div>"""
+<div class="side-toggle"><button class="tab" aria-expanded="false" aria-label="Contact options">Contact us</button><div class="links"><a class="ph" href="tel:{TEL1}" aria-label="Call"><i class="fa-solid fa-phone"></i></a><a href="https://wa.me/{WA}" target="_blank" rel="noopener" style="background:#25d366" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a><a class="em" href="mailto:{SITE['email']}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a><a href="{SITE['social']['facebook']}" style="background:#1877f2" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="{SITE['social']['instagram']}" style="background:#d6249f" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="{SITE['social']['linkedin']}" style="background:#0a66c2" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="{SITE['social']['x']}" style="background:#000" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a><a href="{SITE['social']['telegram']}" style="background:#229ed9" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a></div></div>"""
 
 ORG_LD = {"@context":"https://schema.org","@type":"RealEstateAgent","name":"Mayo Real Estates","url":DOMAIN,
           "logo":DOMAIN+"/assets/img/logo.svg","image":DOMAIN+"/images/p/31737860.jpg","telephone":SITE["phone1"],"email":SITE["email"],
@@ -156,7 +156,7 @@ home = f"""
 <section class="hero" style="background-image:url({img(31737860)})"><div class="container">
   <span class="urdu" lang="ur">آپ کا خواب، ہماری ذمہ داری</span>
   <h1>Homes worth coming home to</h1>
-  <p class="lead">Luxury houses, villas, farmhouses, plots and commercial property in DHA, Bahria Town, Gulberg, E-7 and across Pakistan — every property visited and every document checked by Wakeel Mayo before it reaches you.</p>
+  <p class="lead">Luxury houses, villas, farmhouses, plots and commercial property in DHA, Bahria Town, Gulberg, E-7 and across Pakistan — every property visited and every document checked by Nadeem Mayo before it reaches you.</p>
   <div class="hero-ctas"><a class="btn btn-brass" href="properties.html">Browse properties</a><a class="btn btn-line" href="https://wa.me/{WA}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp {SITE['phone1']}</a></div>
 </div></section>
 <div class="search-dock"><div class="container"><form class="search-card" id="homeSearch" role="search" aria-label="Search properties">
@@ -205,7 +205,7 @@ home = f"""
   <div class="sec-head"><div><h2>How buying with us works</h2><p>Four steps, one person accountable from the first call to the transfer.</p></div></div>
   <div class="steps">
     <div class="step"><h3>Tell us what you need</h3><p>Budget, city, society and size — on WhatsApp or a call. We reply the same day.</p></div>
-    <div class="step"><h3>Visit with Wakeel Mayo</h3><p>We shortlist and show you each property in person, or by live video if you are abroad.</p></div>
+    <div class="step"><h3>Visit with Nadeem Mayo</h3><p>We shortlist and show you each property in person, or by live video if you are abroad.</p></div>
     <div class="step"><h3>Documents checked</h3><p>Title, dues and transfer record are verified before you pay any token money.</p></div>
     <div class="step"><h3>Transfer and keys</h3><p>We stay with you at the society or registry office until the transfer is in your name.</p></div>
   </div>
@@ -232,7 +232,7 @@ home = f"""
 {cta_band(31737859, "Selling a house, plot or farmhouse?", "We photograph it properly, list it here and on our social pages, and bring you serious buyers only.")}
 """
 built.append(page("index.html", "Mayo Real Estates — Luxury Houses, Villas, Farmhouses & Plots for Sale in Lahore & Islamabad",
-     "Buy houses, luxury villas, farmhouses, plots and commercial property in DHA, Bahria Town, Gulberg, Lake City, E-7 and across Pakistan. Verified listings by Wakeel Mayo. WhatsApp +92 347 4209912.",
+     "Buy houses, luxury villas, farmhouses, plots and commercial property in DHA, Bahria Town, Gulberg, Lake City, E-7 and across Pakistan. Verified listings by Nadeem Mayo. WhatsApp +92 307 4646927.",
      home, "home"))
 
 # ---------------- ALL PROPERTIES ----------------
@@ -329,7 +329,7 @@ sell = f"""{page_hero([(None,"Sell your property")], "Sell your property with Ma
   <p class="note">After you send, attach photos and a short video in the same WhatsApp chat.</p>
   <button class="btn btn-wa btn-block" type="submit"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
 </form>
-<div><h2>Why owners list with us</h2><ul class="ticks"><li>Professional photos and video of your property</li><li>Listed on this website and promoted on Facebook, Instagram and TikTok</li><li>Only serious, pre-qualified buyers visit</li><li>We negotiate for the best price</li><li>Help with NDC, transfer and registry</li><li>Your number is never published</li></ul>
+<div><h2>Why owners list with us</h2><ul class="ticks"><li>Professional photos and video of your property</li><li>Listed on this website and promoted on Facebook, Instagram and LinkedIn</li><li>Only serious, pre-qualified buyers visit</li><li>We negotiate for the best price</li><li>Help with NDC, transfer and registry</li><li>Your number is never published</li></ul>
 <img src="{img(18285958)}" alt="Classic living room" style="border-radius:14px;margin-top:20px" loading="lazy"></div>
 </div></section>"""
 built.append(page("sell-property.html", "Sell Your Property in Lahore & Islamabad | Mayo Real Estates", "List your house, plot, farmhouse, villa or shop with Mayo Real Estates. Professional photos, serious buyers and full transfer support.", sell, "sell", 7031607))
@@ -372,22 +372,21 @@ calc = f"""{page_hero([(None,"Calculators")], "Property calculators", "Convert m
 built.append(page("calculators.html", "Marla Kanal Converter, Home Finance & Construction Cost Calculator | Mayo Real Estates", "Convert marla, kanal, square feet and square yards; estimate home finance installments and construction costs in Pakistan.", calc, "calculators", 20074182))
 
 # ---------------- ABOUT ----------------
-about = f"""{page_hero([(None,"About us")], "Wakeel Mayo and Mayo Real Estates", "A Lahore property business built on one promise: we visit it, we check it, and we stand behind it.", 18285958)}
+about = f"""{page_hero([(None,"About us")], "Nadeem Mayo and Mayo Real Estates", "A Lahore property business built on one promise: we visit it, we check it, and we stand behind it.", 18285958)}
 <section class="section tight"><div class="container split" style="align-items:start"><div class="prose">
-<p>Mayo Real Estates is led by <b>Wakeel Mayo</b> from Raiwind, Lahore. We help families and investors buy and sell houses, luxury villas, farmhouses, plots and commercial property in Lahore's top societies — DHA, Bahria Town, Gulberg, Model Town, Lake City and the farmhouse belts of Bedian Road and Raiwind Road — and, through trusted partners, in Islamabad, Rawalpindi, Karachi and the Murree hills.</p>
-<h2>What we believe</h2><ul><li><b>See it first.</b> We list what we have visited ourselves.</li><li><b>Paper before payment.</b> No token is paid until documents are checked.</li><li><b>One person accountable.</b> You deal with Wakeel Mayo from first call to transfer.</li><li><b>Straight talk.</b> If a deal isn't right for you, we say so.</li></ul>
+<p>Mayo Real Estates is led by <b>Nadeem Mayo</b> from Raiwind, Lahore. We help families and investors buy and sell houses, luxury villas, farmhouses, plots and commercial property in Lahore's top societies — DHA, Bahria Town, Gulberg, Model Town, Lake City and the farmhouse belts of Bedian Road and Raiwind Road — and, through trusted partners, in Islamabad, Rawalpindi, Karachi and the Murree hills.</p>
+<h2>What we believe</h2><ul><li><b>See it first.</b> We list what we have visited ourselves.</li><li><b>Paper before payment.</b> No token is paid until documents are checked.</li><li><b>One person accountable.</b> You deal with Nadeem Mayo from first call to transfer.</li><li><b>Straight talk.</b> If a deal isn't right for you, we say so.</li></ul>
 <p>Whether it's your first 5 marla home or a weekend farmhouse with a pool, we would be glad to help.</p>
-<p><a class="btn btn-wa" href="https://wa.me/{WA}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Wakeel Mayo</a></p></div>
+<p><a class="btn btn-wa" href="https://wa.me/{WA}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Nadeem Mayo</a></p></div>
 <div><img src="{img(8143683)}" alt="Mansion with lawn" style="border-radius:14px" loading="lazy">
 <div class="stat-row mt"><div><b>{len(SOCIETIES)}</b>Societies & areas</div><div><b>{len(CITIES)}</b>Cities</div><div><b>6</b>Property types</div><div><b>24/7</b>WhatsApp</div></div></div></div></section>{cta_band()}"""
-built.append(page("about.html", "About Mayo Real Estates — Wakeel Mayo, Lahore", "Mayo Real Estates, led by Wakeel Mayo in Raiwind, Lahore — houses, villas, farmhouses, plots and commercial property across Pakistan.", about, "about", 18285958))
+built.append(page("about.html", "About Mayo Real Estates — Nadeem Mayo, Lahore", "Mayo Real Estates, led by Nadeem Mayo in Raiwind, Lahore — houses, villas, farmhouses, plots and commercial property across Pakistan.", about, "about", 18285958))
 
 # ---------------- CONTACT ----------------
-contact = f"""{page_hero([(None,"Contact")], "Talk to Wakeel Mayo", "Call, WhatsApp or email — we usually reply within the hour.", 7031604)}
+contact = f"""{page_hero([(None,"Contact")], "Talk to Nadeem Mayo", "Call, WhatsApp or email — we usually reply within the hour.", 7031604)}
 <section class="section tight"><div class="container contact-grid">
 <div class="box"><h2>Contact details</h2>
 <div class="c-line"><i class="fa-brands fa-whatsapp"></i><div><small>WhatsApp & call</small><a href="https://wa.me/{WA}" target="_blank" rel="noopener">{SITE['phone1']}</a></div></div>
-<div class="c-line"><i class="fa-solid fa-phone"></i><div><small>Phone</small><a href="tel:{TEL2}">{SITE['phone2']}</a></div></div>
 <div class="c-line"><i class="fa-solid fa-envelope"></i><div><small>Email</small><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
 <div class="c-line"><i class="fa-solid fa-location-dot"></i><div><small>Based in</small><b>{SITE['office']}, Pakistan</b></div></div>
 <div class="c-line"><i class="fa-solid fa-clock"></i><div><small>Hours</small><b>Every day, 10am – 9pm (WhatsApp any time)</b></div></div>
@@ -400,7 +399,7 @@ contact = f"""{page_hero([(None,"Contact")], "Talk to Wakeel Mayo", "Call, Whats
 <button class="btn btn-wa btn-block" style="margin-top:12px"><i class="fa-brands fa-whatsapp"></i> Send on WhatsApp</button>
 <a class="btn btn-line btn-block" style="margin-top:10px" href="mailto:{SITE['email']}"><i class="fa-solid fa-envelope"></i> Or email us</a></form>
 </div></section>"""
-built.append(page("contact.html", "Contact Mayo Real Estates — WhatsApp +92 347 4209912", "Contact Wakeel Mayo at Mayo Real Estates, Lahore. WhatsApp +92 347 4209912, call +92 305 4512133, email wakeelmayo@gmail.com.", contact, "contact", 7031604))
+built.append(page("contact.html", "Contact Mayo Real Estates — WhatsApp +92 307 4646927", "Contact Nadeem Mayo at Mayo Real Estates, Lahore. WhatsApp +92 307 4646927, email nadeemonlin@gmail.com.", contact, "contact", 7031604))
 
 # ---------------- FAQ ----------------
 faq_ld = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q, a in FAQS]}
@@ -425,13 +424,13 @@ priv = """<h2>What we collect</h2><p>When you contact us by WhatsApp, phone or e
 <h2>How we use it</h2><p>Only to reply to you, arrange viewings and complete your property deal. We never sell your details.</p>
 <h2>Your shortlist</h2><p>Saved properties are stored only in your own browser and can be cleared at any time.</p>
 <h2>Third parties</h2><p>Pages load fonts, icons and maps from Google and Cloudflare, and WhatsApp links open WhatsApp; their own privacy policies apply.</p>
-<h2>Contact</h2><p>Questions? Email wakeelmayo@gmail.com.</p>"""
+<h2>Contact</h2><p>Questions? Email nadeemonlin@gmail.com.</p>"""
 built.append(page("privacy-policy.html", "Privacy Policy | Mayo Real Estates", "How Mayo Real Estates handles your information.", page_hero([(None,"Privacy policy")], "Privacy policy", "Last updated October 2026.", 7045701) + '<section class="section tight"><div class="narrow prose">' + priv + '</div></section>', "legal", noindex=False))
 terms = """<h2>Listings</h2><p>Property details and prices are provided by owners and are subject to change. Photos may be representative. All details are confirmed at the site visit and through document verification before any payment.</p>
 <h2>No offer</h2><p>Listings on this website are invitations to enquire, not binding offers. A deal is final only through a written agreement signed by buyer and seller.</p>
 <h2>Calculators</h2><p>Calculator results are estimates for guidance only.</p>
 <h2>Commission</h2><p>Our commission is agreed in writing with each client before any viewing.</p>
-<h2>Contact</h2><p>wakeelmayo@gmail.com · +92 347 4209912</p>"""
+<h2>Contact</h2><p>nadeemonlin@gmail.com · +92 307 4646927</p>"""
 built.append(page("terms.html", "Terms of Use | Mayo Real Estates", "Terms of use for mayorealestates.com.", page_hero([(None,"Terms")], "Terms of use", "Last updated October 2026.", 7045701) + '<section class="section tight"><div class="narrow prose">' + terms + '</div></section>', "legal"))
 
 ids = [l.split("|") for l in open(os.path.join(ROOT, "images/p/photos.txt"), encoding="utf-8").read().splitlines() if l.strip() and not l.startswith("#")]
